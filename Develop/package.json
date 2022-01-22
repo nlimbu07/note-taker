@@ -8,7 +8,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "inquirer": "^8.2.0",
+    "uniqid": "^5.4.0"
   },
   "keywords": [],
   "description": ""

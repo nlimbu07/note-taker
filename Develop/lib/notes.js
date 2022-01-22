@@ -1,37 +1,53 @@
 const fs = require('fs');
 const path = require('path');
+const { id: ab1 } = require('uniqid');
 
-function filterByQuery(query, notes) {
-  let filteredResults = notes;
+function filterByQuery(query, notesArray) {
+  let filteredResults = notesArray;
 
   if (query.title) {
     filteredResults = filteredResults.filter(
       (note) => note.tittle === query.tittle
     );
   }
+  if (query.text) {
+    filteredResults = filteredResults.filter(
+      (note) => note.text === query.text
+    );
+  }
+  if (query.id) {
+    filteredResults = filteredResults.filter((note) => note.id === query.id);
+  }
+
   return filteredResults;
 }
 
-function findById(id, notes) {
-  const result = notes.filter((note) => note.id === id)[0];
+function findById(id, notesArray) {
+  const result = notesArray.filter((note) => note.id === id)[0];
   return result;
 }
 
-function createNewNote(body, notes) {
+function createNewNote(body, notesArray) {
   const note = body;
-  notes.push(note);
+  notesArray.push(note);
   fs.writeFileSync(
     path.join(__dirname, '../db/db.json'),
-    JSON.stringify({ notes }, null, 2)
+    JSON.stringify({ notesArray }, null, 2)
   );
   return note;
 }
 
-function validateNotes(note) {
+function validateNote(note) {
   if (!note.title || typeof note.title !== 'string') {
+    return false;
+  }
+  if (!note.text || typeof note.text !== 'string') {
+    return false;
+  }
+  if (!note.id || typeof note.id !== 'string') {
     return false;
   }
   return true;
 }
 
-module.exports = { filterByQuery, findById, createNewNote, validateNotes };
+module.exports = { filterByQuery, findById, createNewNote, validateNote };

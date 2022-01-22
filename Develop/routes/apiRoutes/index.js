@@ -1,7 +1,8 @@
-const router = require('express').Router();
-const notesRouters = require('./notesRoutes');
+// central hub to pull notes files
+const express = require('express');
+const router = express.Router();
 
-// middleware
-router.use(notesRouters);
+// Express middleware
+router.use(require('./notesRoutes'));
 
 module.exports = router;
