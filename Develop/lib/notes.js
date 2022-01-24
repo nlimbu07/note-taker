@@ -1,5 +1,8 @@
 const fs = require('fs');
 const path = require('path');
+const { uuid } = require('uuidv4');
+
+console.log(uuid());
 
 function createNewNote(body, notesArray) {
   const note = body;

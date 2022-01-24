@@ -6,7 +6,7 @@ const saveNotes = require('../../db/db.json');
 
 // Get notes
 router.get('/notes', (req, res) => {
-  res.json(saveNotes.slice(1));
+  res.json(saveNotes);
 });
 
 // Post note
@@ -17,7 +17,7 @@ router.post('/notes', (req, res) => {
 
 // Delete note
 router.delete('/notes/:id', (req, res) => {
-  deleteNote(req.params.id, saveNotes);
+  deleteNote(req.params, saveNotes);
   res.json(true);
 });
 
