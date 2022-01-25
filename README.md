@@ -8,8 +8,8 @@ This application uses an Express.js back end and saves and retrieves note data f
 
 ## Application Screenshot
 
-![application screenshot](./Develop/images/image2.png)
-![application screenshot](./Develop/images/image2.png)
+![application screenshot](./Develop/images/image1.png)
+![application screenshot](./Develop/images/image1.png)
 
 #### [Deployed Appication](https://github.com/nlimbu07/note-taker)
 
